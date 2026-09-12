@@ -150,8 +150,8 @@ object ProviderCatalog {
         freeTier = true,
         models = listOf(
             ProviderModel(
-                id = "gemini-2.5-flash",
-                displayName = "Gemini 2.5 Flash",
+                id = "gemini-3.6-flash",
+                displayName = "Gemini 3.6 Flash",
                 tagline = "Free-tier friendly, fast, 1M context.",
                 contextWindow = 1_000_000,
                 maxTokens = 65_536,

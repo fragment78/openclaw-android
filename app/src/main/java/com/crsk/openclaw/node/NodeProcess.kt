@@ -312,7 +312,14 @@ class NodeProcess @Inject constructor(
             val modelId = provider.models.firstOrNull { it.id == selected }?.id
                 ?: provider.defaultModel.id
             modelCfg.put("primary", "${provider.id}/$modelId")
-            modelCfg.put("fallbacks", org.json.JSONArray())
+modelCfg.put(
+    "fallbacks",
+    org.json.JSONArray().apply {
+        if (provider.id == "gem" && modelId == "gemini-3.6-flash") {
+            put("gem/gemini-3.5-flash-lite")
+        }
+    }
+)
 
             val serialised = cfg.toString(2)
             val hash = sha256(serialised)

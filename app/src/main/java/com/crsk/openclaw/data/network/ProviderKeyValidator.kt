@@ -26,9 +26,13 @@ class ProviderKeyValidator @Inject constructor() {
 
         val key = apiKey.trim()
 
-        if (!key.matches(provider.keyPattern)) {
-            return@withContext KeyValidationResult.InvalidKey
-        }
+        if (key.isBlank()) {
+    return@withContext KeyValidationResult.InvalidKey
+}
+
+if (provider.id != "gem" && !key.matches(provider.keyPattern)) {
+    return@withContext KeyValidationResult.InvalidKey
+}
 
         val isGemini = provider.id == "gem"
 

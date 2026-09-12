@@ -183,12 +183,16 @@ class ChatSession @Inject constructor(
         // `extraHeaders` is currently unused but retained as a placeholder for any
         // future openclaw schema additions.
         val params = JSONObject().apply {
-            put("message", composedMessage)
-            put("sessionKey", sessionKey)
-            put("model", bareModelId)
-            put("provider", providerId)
-            put("idempotencyKey", UUID.randomUUID().toString())
-            put("extraSystemPrompt", phoneCapabilitySuffix)
+           put("message", composedMessage)
+put("sessionKey", sessionKey)
+
+if (!(providerId == "gem" && bareModelId == "gemini-3.6-flash")) {
+    put("model", bareModelId)
+    put("provider", providerId)
+}
+
+put("idempotencyKey", UUID.randomUUID().toString())
+put("extraSystemPrompt", phoneCapabilitySuffix)
         }
 
         // Tracks the runId for the active agent run so HeartbeatChannel can distinguish

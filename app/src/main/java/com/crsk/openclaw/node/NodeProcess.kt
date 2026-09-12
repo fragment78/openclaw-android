@@ -239,9 +239,21 @@ class NodeProcess @Inject constructor(
                 val key = keyStore.getProviderKey(p.id)
                 if (key.isBlank()) continue
                 providers.put(p.id, org.json.JSONObject().apply {
-                    put("baseUrl", p.baseUrl)
-                    put("apiKey", key)
-                    put("api", "openai-completions")
+    put(
+        "baseUrl",
+        if (p.id == "gem")
+            "https://generativelanguage.googleapis.com/v1beta"
+        else
+            p.baseUrl
+    )
+    put("apiKey", key)
+    put(
+        "api",
+        if (p.id == "gem")
+            "google-generative-ai"
+        else
+            "openai-completions"
+    )
                     // Pin the embedded "pi" agent harness. openclaw routes
                     // openai-completions providers to the external "codex" harness
                     // when agentRuntime is unset → codex isn't registered on-device

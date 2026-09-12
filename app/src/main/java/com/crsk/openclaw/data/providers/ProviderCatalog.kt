@@ -144,8 +144,8 @@ object ProviderCatalog {
         // Gemini's OpenAI-compat layer (AI Studio key, generous free tier).
         baseUrl = "https://generativelanguage.googleapis.com/v1beta/openai",
         keyLabel = "Gemini API key",
-        keyHint = "AIza…",
-        keyPattern = Regex("^AIza[A-Za-z0-9_-]{30,}$"),
+        keyHint = "Gemini API key",
+        keyPattern = Regex("^\\S{20,}$"),
         consoleUrl = "https://aistudio.google.com/apikey",
         freeTier = true,
         models = listOf(

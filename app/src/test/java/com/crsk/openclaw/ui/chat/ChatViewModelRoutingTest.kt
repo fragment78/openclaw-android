@@ -14,9 +14,9 @@ import org.junit.Test
 class ChatViewModelRoutingTest {
 
     @Test fun `valid selection passes through unchanged`() {
-        val (provider, model) = selectProvider("gem", "gemini-2.5-flash")
+        val (provider, model) = selectProvider("gem", "gemini-3.6-flash")
         assertEquals("gem", provider)
-        assertEquals("gemini-2.5-flash", model)
+        assertEquals("gemini-3.6-flash", model)
     }
 
     @Test fun `every catalog model routes to its own provider`() {
@@ -38,7 +38,7 @@ class ChatViewModelRoutingTest {
     @Test fun `model from a different provider falls back to the selected provider's default`() {
         // e.g. user switched provider in Settings but the stored model id still
         // belongs to the previous provider.
-        val (provider, model) = selectProvider("oai", "gemini-2.5-flash")
+        val (provider, model) = selectProvider("oai", "gemini-3.6-flash")
         assertEquals("oai", provider)
         assertEquals(ProviderCatalog.OPENAI.defaultModel.id, model)
     }

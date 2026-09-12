@@ -157,6 +157,13 @@ object ProviderCatalog {
                 maxTokens = 65_536,
             ),
             ProviderModel(
+    id = "gemini-3.5-flash-lite",
+    displayName = "Gemini 3.5 Flash-Lite",
+    tagline = "Higher free-tier limits; fallback for agent loops.",
+    contextWindow = 1_000_000,
+    maxTokens = 65_536,
+),
+            ProviderModel(
                 id = "gemini-2.5-pro",
                 displayName = "Gemini 2.5 Pro",
                 tagline = "Stronger reasoning, 1M context.",
